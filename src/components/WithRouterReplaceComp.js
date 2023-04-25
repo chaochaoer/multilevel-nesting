@@ -1,4 +1,4 @@
-import { KeepAlive, h } from 'vue';
+import { h, KeepAlive } from 'vue';
 import { RouterView } from 'vue-router';
 
 export default function WithRouterReplaceComp(Component, keepAlive = true) {

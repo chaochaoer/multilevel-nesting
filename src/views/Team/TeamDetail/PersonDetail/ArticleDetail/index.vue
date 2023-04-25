@@ -12,6 +12,8 @@ export default {
 </script>
 <script setup>
 import { useCounter } from "@/util"
+import { useRoute } from "vue-router"
+console.log(useRoute().params)
 
 const [count, counter] = useCounter()
 </script>
