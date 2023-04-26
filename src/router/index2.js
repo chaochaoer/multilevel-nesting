@@ -8,7 +8,7 @@ const router = createRouter({
     {
       path: '/',
       component: Layouts,
-      redirect: '/team',
+      redirect: '/team1',
       children: [
         {
           path: '/team1',
@@ -21,7 +21,7 @@ const router = createRouter({
             {
               name: 'TeamDetail1',
               path: ':teamId',
-              component: () => import('@/views/Team1/TeamDetail/index.vue'),
+              component: WithRouterReplaceComp(() => import('@/views/Team1/TeamDetail/index.vue')),
               props: {
                 type: '12'
               },
@@ -33,7 +33,7 @@ const router = createRouter({
                 {
                   name: 'PersonDetail1',
                   path: ':personId',
-                  component: () => import('@/views/Team1/TeamDetail/PersonDetail/index.vue'),
+                  component: WithRouterReplaceComp(() => import('@/views/Team1/TeamDetail/PersonDetail/index.vue')),
                   meta: {
                     title: '个人详情',
                     inferRealPath: true
@@ -56,7 +56,7 @@ const router = createRouter({
         {
           path: '/team2',
           name: 'team2',
-          component: () => import('@/views/Team2/index.vue'),
+          component: WithRouterReplaceComp(() => import('@/views/Team2/index.vue')),
           meta: {
             title: '团队管理2',
           },
@@ -64,7 +64,7 @@ const router = createRouter({
             {
               name: 'TeamDetail2',
               path: ':teamId',
-              component: () => import('@/views/Team2/TeamDetail/index.vue'),
+              component: WithRouterReplaceComp(() => import('@/views/Team2/TeamDetail/index.vue')),
               props: {
                 type: '12'
               },
@@ -76,7 +76,7 @@ const router = createRouter({
                 {
                   name: 'PersonDetail2',
                   path: ':personId',
-                  component: () => import('@/views/Team2/TeamDetail/PersonDetail/index.vue'),
+                  component: WithRouterReplaceComp(() => import('@/views/Team2/TeamDetail/PersonDetail/index.vue')),
                   meta: {
                     title: '个人详情',
                     inferRealPath: true
@@ -107,7 +107,7 @@ const router = createRouter({
             {
               name: 'TeamDetail3',
               path: ':teamId',
-              component: () => import('@/views/Team3/TeamDetail/index.vue'),
+              component: WithRouterReplaceComp(() => import('@/views/Team3/TeamDetail/index.vue')),
               props: {
                 type: '12'
               },
@@ -119,7 +119,7 @@ const router = createRouter({
                 {
                   name: 'PersonDetail3',
                   path: ':personId',
-                  component: () => import('@/views/Team3/TeamDetail/PersonDetail/index.vue'),
+                  component: WithRouterReplaceComp(() => import('@/views/Team3/TeamDetail/PersonDetail/index.vue')),
                   meta: {
                     title: '个人详情',
                     inferRealPath: true
@@ -142,7 +142,7 @@ const router = createRouter({
         {
           name: 'demo1',
           path: '/demo1',
-          component: () => import('@/views/Demo1/index.vue'),
+          component: () => import('@/views/Demo1'),
           meta: {
             title: 'demo1',
           },
