@@ -9,9 +9,11 @@
       </div>
       <div style="width: 300px;margin-left: 50px;">
         <router-view v-slot="{ Component }">
-          <keep-alive :include="['teamIndex']">
-            <component :is="Component" />
-          </keep-alive>
+          <transition name="fade-transform" mode='out-in'>
+            <keep-alive>
+              <component :is="Component" />
+            </keep-alive>
+          </transition>
         </router-view>
       </div>
     </div>
@@ -36,6 +38,22 @@ import SideBar from "./sideBar.vue"
   width: 500px;
   margin: 0 auto;
   margin-top: 100px;
+}
+
+/* 进入动画 */
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+  transition: all 0.3s linear;
+}
+
+.fade-transform-enter-from {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.fade-transform-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
 }
 </style>
 

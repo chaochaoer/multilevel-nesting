@@ -1,13 +1,13 @@
 <template>
   <div>
-    <p>这里是 文章详情</p>
+    <p>这里是 文章详情2</p>
     {{ count }}
     <button @click="counter">累加</button>
   </div>
 </template>
 <script>
 export default {
-  name: 'ArticleDetail'
+  name: 'ArticleDetail2'
 }
 </script>
 <script setup>
