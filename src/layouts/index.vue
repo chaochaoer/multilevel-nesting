@@ -9,11 +9,11 @@
       </div>
       <div style="width: 300px;margin-left: 50px;">
         <router-view v-slot="{ Component }">
-          <!-- <transition name="fade-transform" mode='out-in'> -->
+          <transition name="fade-transform" mode='out-in'>
             <keep-alive>
               <component :is="Component" />
             </keep-alive>
-          <!-- </transition> -->
+          </transition>
         </router-view>
       </div>
     </div>

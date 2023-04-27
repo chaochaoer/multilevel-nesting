@@ -31,6 +31,7 @@ export default function WithRouterReplaceComp(Component, f) {
             currentCom = (newV === ComponentWarper.name) ? ComponentWarper : route.matched.at(-1).components.default
           },
           { immediate: true }
+          { immediate: true }
         )
         // onActivated(() => {
         //   console.log(f, 'active')

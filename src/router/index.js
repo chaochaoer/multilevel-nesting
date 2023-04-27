@@ -13,7 +13,7 @@ const router = createRouter({
         {
           path: '/team1',
           name: 'team1',
-          component: WithRouterReplaceComp(() => import('@/views/Team1/index.vue'),1),
+          component: WithRouterReplaceComp(() => import('@/views/Team1/index.vue'), 1),
           meta: {
             title: '团队管理1',
           },
@@ -56,7 +56,7 @@ const router = createRouter({
         {
           path: '/team2',
           name: 'team2',
-          component: WithRouterReplaceComp(() => import('@/views/Team2/index.vue'),2),
+          component: WithRouterReplaceComp(() => import('@/views/Team2/index.vue'), 2),
           meta: {
             title: '团队管理2',
           },
@@ -99,7 +99,7 @@ const router = createRouter({
         {
           path: '/team3',
           name: 'team3',
-          component: WithRouterReplaceComp(() => import('@/views/Team3/index.vue'),3),
+          component: WithRouterReplaceComp(() => import('@/views/Team3/index.vue'), 3),
           meta: {
             title: '团队管理3',
           },
