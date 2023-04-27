@@ -1,6 +1,6 @@
 import { useCounter } from "@/util";
 import { useRouter, useRoute } from "vue-router";
-import { computed } from "vue";
+import { computed, onActivated, onDeactivated } from "vue";
 export default {
   name: "demo1-index",
   setup() {
@@ -11,9 +11,16 @@ export default {
       router.push("/team");
     };
     const currentCom = computed(() => {
-      return (
-        route.matched.at(-1).components.default
-      );
+      return route.matched.at(-1).components.default;
+    });
+    onActivated(() => {
+      console.log(f, "active");
+      currentCom = ComponentWarper;
+      resume();
+    });
+    onDeactivated(() => {
+      pause();
+      console.log(f, "deactivate");
     });
     return () => {
       console.log(currentCom, 123);

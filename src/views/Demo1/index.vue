@@ -14,9 +14,15 @@ export default {
 <script setup>
 import { useCounter } from "@/util"
 import { useRouter } from "vue-router"
+import { onActivated, onDeactivated } from "vue";
 
 const router = useRouter()
-
+onActivated(() => {
+  console.log("active demo1");
+});
+onDeactivated(() => {
+  console.log("deactive demo1");
+});
 const [count, counter] = useCounter()
 const jump = () => {
   router.push('/team')

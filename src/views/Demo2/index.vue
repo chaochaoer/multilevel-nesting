@@ -14,7 +14,13 @@ export default {
 <script setup>
 import { useCounter } from "@/util"
 import { useRouter } from "vue-router"
-
+import { onActivated, onDeactivated } from "vue";
+onActivated(() => {
+  console.log("active demo2");
+});
+onDeactivated(() => {
+  console.log("deactive demo2");
+});
 const router = useRouter()
 const [count, counter] = useCounter()
 
