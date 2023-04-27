@@ -10,9 +10,9 @@ export default function WithRouterReplaceComp(Component, keepAlive = true) {
       name: ComponentWarper.name,
       setup(props, { attrs }) {
         return () => {
+          console.log('123')
           return h('div', h(RouterView, null, {
             default: ({ Component }) => {
-              console.log('123')
               let Com = h(Component ?? ComponentWarper, { ...attrs })
               if (keepAlive) return h(KeepAlive, { include: [ComponentWarper.name] }, [Com])
               else return Com

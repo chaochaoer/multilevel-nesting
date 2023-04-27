@@ -13,7 +13,6 @@ export default function WithRouterReplaceComp(Component, keepAlive = true) {
         const route = useRoute()
         const Com = h(route.matched.at(-1).components.default, attrs)
         console.log(route.matched)
-        console.log(Com, KeepAlive, keepAlive)
         return () => {
           if (keepAlive) return h(KeepAlive, { include: [ComponentWarper.name] }, [Com])
           else return Com

@@ -1,5 +1,6 @@
-import { h, KeepAlive, watch, ref, onDeactivated, Component as Real } from 'vue';
+import { h, KeepAlive, ref, onActivated, onDeactivated } from 'vue';
 import { useRoute } from 'vue-router';
+import { watchPausable } from '@vueuse/core'
 
 export default function WithRouterReplaceComp(Component, f) {
   const fn = async () => {
@@ -10,24 +11,38 @@ export default function WithRouterReplaceComp(Component, f) {
       name: ComponentWarper.name,
       setup() {
         const route = useRoute()
-        const currentCom = ref(ComponentWarper)
-        const stop = watch(
+        const keepAliveComponentName = ref([])
+        let currentCom = ComponentWarper
+        const { pause, resume } = watchPausable(
           () => route.matched.at(-1).components.default.name,
-          (newV, oldV) => {
-            console.log(f, newV, oldV, '111')
-            currentCom.value = (newV === ComponentWarper.name) ? ComponentWarper : route.matched.at(-1).components.default
+          (newV) => {
+            let flag = false
+            keepAliveComponentName.value = []
+            route.matched.forEach((item) => {
+              if (flag) {
+                keepAliveComponentName.value.push(item.components.default.name)
+              }
+              if (item.components.default.name === ComponentWarper.name) {
+                keepAliveComponentName.value.push(item.components.default.name)
+                flag = true
+              }
+            })
+            currentCom = (newV === ComponentWarper.name) ? ComponentWarper : route.matched.at(-1).components.default
           },
-          {
-            immediate: true
-          }
+          { immediate: true }
         )
+        onActivated(() => {
+          console.log(f, 'active')
+          currentCom = ComponentWarper
+          resume()
+        })
         onDeactivated(() => {
-          console.log(f, 'XXX')
-          stop()
+          pause()
+          console.log(f, 'deactivate')
         })
         return () => {
-          console.log(f, 123)
-          return h('div', null, h(KeepAlive, null, [h(Real, { is: currentCom.value })]))
+          // console.log(f, 'render')
+          return h('div', null, h(KeepAlive, { include: keepAliveComponentName.value }, [h(currentCom)]))
         }
       }
     }
