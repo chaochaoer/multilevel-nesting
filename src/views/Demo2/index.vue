@@ -3,7 +3,7 @@
     <p>这里是 demo2</p>
     {{ count }}
     <button @click="counter">累加</button>
-    <button @click="jump">跳转到 团队管理</button>
+    <button @click="jump">跳转到 团队管理2</button>
   </div>
 </template>
 <script>
@@ -14,17 +14,11 @@ export default {
 <script setup>
 import { useCounter } from "@/util"
 import { useRouter } from "vue-router"
-import { onActivated, onDeactivated } from "vue";
-onActivated(() => {
-  console.log("active demo2");
-});
-onDeactivated(() => {
-  console.log("deactive demo2");
-});
+
 const router = useRouter()
 const [count, counter] = useCounter()
 
 const jump = () => {
-  router.push('/team')
+  router.push('/team2')
 }
 </script>

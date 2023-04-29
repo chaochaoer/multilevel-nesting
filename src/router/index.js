@@ -13,7 +13,7 @@ const router = createRouter({
         {
           path: '/team1',
           name: 'team1',
-          component: WithRouterReplaceComp(() => import('@/views/Team1/index.vue'), 1),
+          component: WithRouterReplaceComp(() => import('@/views/Team1/index.vue')),
           meta: {
             title: '团队管理1',
           },
@@ -22,9 +22,6 @@ const router = createRouter({
               name: 'TeamDetail1',
               path: ':teamId',
               component: () => import('@/views/Team1/TeamDetail/index.vue'),
-              props: {
-                type: '12'
-              },
               meta: {
                 title: '团队详情',
                 inferRealPath: true
@@ -56,7 +53,7 @@ const router = createRouter({
         {
           path: '/team2',
           name: 'team2',
-          component: WithRouterReplaceComp(() => import('@/views/Team2/index.vue'), 2),
+          component: WithRouterReplaceComp(() => import('@/views/Team2/index.vue')),
           meta: {
             title: '团队管理2',
           },
@@ -65,9 +62,6 @@ const router = createRouter({
               name: 'TeamDetail2',
               path: ':teamId',
               component: () => import('@/views/Team2/TeamDetail/index.vue'),
-              props: {
-                type: '12'
-              },
               meta: {
                 title: '团队详情',
                 inferRealPath: true
@@ -99,7 +93,7 @@ const router = createRouter({
         {
           path: '/team3',
           name: 'team3',
-          component: WithRouterReplaceComp(() => import('@/views/Team3/index.vue'), 3),
+          component: WithRouterReplaceComp(() => import('@/views/Team3/index.vue')),
           meta: {
             title: '团队管理3',
           },
@@ -108,9 +102,6 @@ const router = createRouter({
               name: 'TeamDetail3',
               path: ':teamId',
               component: () => import('@/views/Team3/TeamDetail/index.vue'),
-              props: {
-                type: '12'
-              },
               meta: {
                 title: '团队详情',
                 inferRealPath: true

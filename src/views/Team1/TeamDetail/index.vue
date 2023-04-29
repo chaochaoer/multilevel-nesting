@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>这里是 团队详情1 props.type是{{ props.type }}</p>
+    <p>这里是 团队详情1</p>
     {{ count }}
     <button @click="counter">累加</button>
     <button @click="jump">跳转到下一级</button>
@@ -14,13 +14,8 @@ export default {
 </script>
 <script setup>
 import { useCounter } from "@/util"
-// import { onActivated, onDeactivated } from "vue"
 import { useRouter } from "vue-router"
-/* eslint-disable */
-const props = defineProps({
-  type: String
-})
-console.log(props.type, 'props.type1')
+
 const router = useRouter()
 const [count, counter] = useCounter()
 const jump = () => {
@@ -31,13 +26,6 @@ const jump = () => {
     }
   })
 }
-
-// onActivated(() => {
-//   console.log('111')
-// })
-// onDeactivated(() => {
-//   console.log('111222')
-// })
 
 const jumpTest = () => {
   router.push('/demo1')
