@@ -11,8 +11,7 @@ export default function WithRouterReplaceComp(Component) {
       name: ComponentWarper.name,
       setup() {
         const route = useRoute()
-        let keepAliveComponentName = []
-        let currentCom = ComponentWarper
+        let keepAliveComponentName = [], currentCom = ComponentWarper, props = {}
         watch(
           () => route.matched.at(-1).components.default.name,
           (newV) => {
@@ -27,14 +26,15 @@ export default function WithRouterReplaceComp(Component) {
                 flag = true
               }
             })
-
-            currentCom = (newV === ComponentWarper.name) ? ComponentWarper : route.matched.at(-1).components.default
+            let currentRouter = route.matched.at(-1)
+            currentCom = (newV === ComponentWarper.name) ? ComponentWarper : currentRouter.components.default
+            props = currentRouter.props.default || {}
           },
           { immediate: true }
         )
 
         return () => {
-          return h('div', null, h(KeepAlive, { include: keepAliveComponentName }, [h(currentCom)]))
+          return h('div', null, h(KeepAlive, { include: keepAliveComponentName }, [h(currentCom, { ...props })]))
         }
       }
     }

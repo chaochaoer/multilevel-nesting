@@ -13,11 +13,12 @@ export default {
 }
 </script>
 <script setup>
-import { useCounter } from "@/util"
+import { useCounter, } from "@/util"
 import { useRouter } from "vue-router"
 
 const router = useRouter()
 const [count, counter] = useCounter()
+
 const jump = () => {
   router.push({
     name: 'PersonDetail1',

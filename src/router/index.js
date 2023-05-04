@@ -31,6 +31,9 @@ const router = createRouter({
                   name: 'PersonDetail1',
                   path: ':personId',
                   component: () => import('@/views/Team1/TeamDetail/PersonDetail/index.vue'),
+                  props: {
+                    type: 1
+                  },
                   meta: {
                     title: '个人详情',
                     inferRealPath: true
